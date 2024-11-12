@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import VideoPlayer from '../components/VideoPlayer.tsx'
 
 const Videos: React.FC = () => {
   const videos = [
@@ -7,14 +8,13 @@ const Videos: React.FC = () => {
     { id: 2, title: 'Video 2', thumbnail: '/thumb2.jpg', videoUrl: '/videos/video2.mp4' },
   ];
 
+  const url = '../video.mp4'
+
   return (
     <div>
-      {videos.map((video) => (
-        <Link to={`/videos/${video.id}`} key={video.id}>
-          <img src={video.thumbnail} alt={video.title} />
-          <p>{video.title}</p>
-        </Link>
-      ))}
+  
+        <VideoPlayer video={url} />
+  
     </div>
   );
 };
