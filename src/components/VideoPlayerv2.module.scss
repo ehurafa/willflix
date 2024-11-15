@@ -1,0 +1,96 @@
+@import '../styles/_variables.scss';
+
+.video-player {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    background-color: $color-background;
+    overflow: hidden; /* Impede o transbordamento */
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .controls.visible {
+    opacity: 1; /* Torna os controles visíveis */
+  }
+  
+  .play-pause {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .progress-bar-container {
+    flex-grow: 1;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: $color-gray-dark;
+    height: 5px;
+    border-radius: 5px;
+  }
+  
+  .progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: $color-primary;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .volume-control {
+    width: 80px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: $color-gray-dark;
+    height: 5px;
+    border-radius: 5px;
+  }
+  
+  .volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: $color-primary;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .loading-indicator {
+    color: $color-text-light;
+    font-size: 14px;
+    padding-left: 10px;
+    font-style: italic;
+  }
+  
