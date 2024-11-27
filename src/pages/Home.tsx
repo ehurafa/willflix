@@ -1,9 +1,10 @@
 import React from 'react';
 import './Home.css';
+import backgroundImage from '../assets/background.jpg';
 
 const Home: React.FC = () => (
   <div className="home">
-    <img src="/imagem.jpg" alt="Background" className="background-image" />
+    <img src={backgroundImage} alt="Background" className="background-image" />
   </div>
 );
 
