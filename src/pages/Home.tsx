@@ -1,10 +1,11 @@
-import React from 'react';
-import './Home.css';
-import backgroundImage from '../assets/background.jpg';
+import React from 'react'
+import './Home.scss'
+
+import Hero from '../components/Hero';
 
 const Home: React.FC = () => (
   <div className="home">
-    <img src={backgroundImage} alt="Background" className="background-image" />
+    <Hero />
   </div>
 );
 
