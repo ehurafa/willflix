@@ -5,7 +5,7 @@ import Card from './Card'
 
 interface HeroProps {}
 
-const Hero: React.FC<HeroProps> = (props) => {
+const Hero: React.FC<HeroProps> = () => {
   return (
     <div className="hero">
       <Card />

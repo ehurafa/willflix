@@ -5,7 +5,7 @@ import { FaPlay, FaPlus  } from 'react-icons/fa'
 
 interface CardProps {}
 
-const Card: React.FC<CardProps> = (props) => {
+const Card: React.FC<CardProps> = () => {
   return (
     <div className="card">
       <article>
@@ -16,19 +16,19 @@ const Card: React.FC<CardProps> = (props) => {
             <li>Anime</li>
             <li>Ação</li>
           </ul>
-          <div className="actions">
-            <button className="button">
-              <span>
-                <FaPlay /> Assistir
-              </span>
-            </button>
-            <button className="button secondary">
-              <span>
-                <FaPlus /> Minha lista
-              </span>
-            </button>
-          </div>
         </header>
+        <div className="actions">
+          <button className="button">
+            <span>
+              <FaPlay /> Assistir
+            </span>
+          </button>
+          <button className="button secondary">
+            <span>
+              <FaPlus /> Minha lista
+            </span>
+          </button>
+        </div>
       </article>
     </div>
   )
