@@ -19,10 +19,22 @@ body {
 }
 
 .button {
+  @include border-radius(4px);
   display: inline-block;
-  padding:  10px;
+  padding: 0 10px;
   font-size: 1rem;
   text-decoration: none;
+  border: 0;
+  outline: 0;
+  background-color: $color-text-light;
+  height: 40px;
+  line-height: 40px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 
   &.pill {
     @include border-radius(20px);
@@ -30,5 +42,12 @@ body {
     font-size: 0.8rem;
     color: $color-text-light;
     border: 1px solid $color-text-light;
+    background: transparent;
   }
+
+  &.secondary {
+    color: $color-text-light;;
+    background-color: $color-gray-dark;
+  }
+  
 }

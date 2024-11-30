@@ -1,6 +1,8 @@
 import React from 'react'
 import './Card.scss'
 
+import { FaPlay, FaPlus  } from 'react-icons/fa'
+
 interface CardProps {}
 
 const Card: React.FC<CardProps> = (props) => {
@@ -15,8 +17,16 @@ const Card: React.FC<CardProps> = (props) => {
             <li>Ação</li>
           </ul>
           <div className="actions">
-            <button className="button">Assistir</button>
-            <button className="button secondary">+ Minha lista</button>
+            <button className="button">
+              <span>
+                <FaPlay /> Assistir
+              </span>
+            </button>
+            <button className="button secondary">
+              <span>
+                <FaPlus /> Minha lista
+              </span>
+            </button>
           </div>
         </header>
       </article>
