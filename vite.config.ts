@@ -34,4 +34,14 @@ export default defineConfig({
       '@root': path.resolve(__dirname, 'src'),
     },
   },
+  server: {
+    proxy: {
+      // proxy to test local
+      '/api/videos': {
+        target: 'https://agenciacardeal.com.br',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/videos/, '/willflix/videos'),
+      },
+    },
+  },
 });
