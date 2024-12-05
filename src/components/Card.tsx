@@ -2,6 +2,7 @@ import React from 'react'
 import './Card.scss'
 
 import { FaPlay, FaPlus  } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 interface CardProps {}
 
@@ -18,11 +19,11 @@ const Card: React.FC<CardProps> = () => {
           </ul>
         </header>
         <div className="actions">
-          <button className="button">
+          <Link to="/videos/animes/dragonball-daima/01/ep1" className="button">
             <span>
               <FaPlay /> Assistir
             </span>
-          </button>
+          </Link>
           <button className="button secondary">
             <span>
               <FaPlus /> Minha lista

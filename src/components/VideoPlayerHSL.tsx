@@ -39,7 +39,7 @@ const ShakaPlayer: React.FC<ShakaPlayerProps> = ({ src, onTimeUpdate, onEvent })
     };
   }, [src, onTimeUpdate, onEvent]);
 
-  return <video ref={videoRef} style={{ width: '100%', height: '100%' }} controls autoPlay />;
+  return <video ref={videoRef} style={{ width: '100%', height: '100%' }} controls />;
 };
 
 export default ShakaPlayer;

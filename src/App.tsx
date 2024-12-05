@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Videos from './pages/Videos';
+import Playground from './pages/Playground';
 
 const App: React.FC = () => (
   <Router>
@@ -10,7 +10,8 @@ const App: React.FC = () => (
     <div className="container">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/videos" element={<Videos />} />
+        {/* videos/categoria/titulo/temporada/ep */}
+        <Route path="/videos/:category/:title/:session/:id" element={<Playground />} />
       </Routes>
     </div>
   </Router>

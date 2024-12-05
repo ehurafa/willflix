@@ -40,7 +40,17 @@ export default defineConfig({
       '/api/videos': {
         target: 'https://agenciacardeal.com.br',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/videos/, '/willflix/videos'),
+        rewrite: (path) => path.replace(/^\/api\/videos/, '/willflix-videos/'),
+      },
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @use "src/styles/variables";
+        @use "src/styles/mixins";
+        `,
       },
     },
   },
