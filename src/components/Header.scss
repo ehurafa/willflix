@@ -1,8 +1,20 @@
+@import "../styles/variables";
+
 .header {
   padding: 10px;
 
-  ul {
+  nav {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    ul {
+      display: flex;
+      gap: 10px;
+    }
+
+    p {
+      color: $color-text-light;
+    }
   }
 }
