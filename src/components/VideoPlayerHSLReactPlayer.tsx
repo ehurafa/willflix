@@ -1,66 +1,70 @@
-import React, { useRef, useState, useEffect } from "react";
-import ReactPlayer from "react-player";
-import { FaPlay, FaPause, FaExpand, FaForward, FaBackward, FaSun, FaStepForward } from "react-icons/fa";
-import "./VideoPlayerHSLReactPlayer.scss";
+import React, { useRef, useState, useEffect } from "react"
+import ReactPlayer from "react-player"
+import { FaPlay, FaPause, FaExpand, FaForward, FaBackward, FaSun, FaStepForward } from "react-icons/fa"
+import "./VideoPlayerHSLReactPlayer.scss"
 
-const VideoPlayerHSLReactPlayer = ({ src, nextEpisode, initialTime = 0, onSaveProgress }) => {
-  const playerRef = useRef(null);
-  const [playing, setPlaying] = useState(true);
-  const [progress, setProgress] = useState(initialTime);
-  const [duration, setDuration] = useState(0);
-  const [showControls, setShowControls] = useState(true);
-  const [playbackRate, setPlaybackRate] = useState(1);
-  const [brightness, setBrightness] = useState(100);
+interface VideoPlayerProps {
+  src: string;
+  nextEpisode?: () => void;
+  initialTime?: number;
+  onSaveProgress?: (time: number) => void
+}
+
+const VideoPlayerHSLReactPlayer: React.FC<VideoPlayerProps> = ({ src, nextEpisode, initialTime = 0, onSaveProgress }) => {
+  const playerRef = useRef<ReactPlayer | null>(null)
+  const [playing, setPlaying] = useState(true)
+  const [progress, setProgress] = useState(initialTime)
+  const [duration, setDuration] = useState(0)
+  const [showControls, setShowControls] = useState(true)
+  const [playbackRate, setPlaybackRate] = useState(1)
+  const [brightness, setBrightness] = useState(100)
 
   useEffect(() => {
     if (playerRef.current) {
-      playerRef.current.seekTo(initialTime);
+      playerRef.current.seekTo(initialTime, "seconds")
     }
-  }, [initialTime]);
+  }, [initialTime])
 
-  const togglePlay = () => setPlaying(!playing);
+  const togglePlay = () => setPlaying((prev) => !prev)
 
-  const handleProgress = ({ playedSeconds }) => {
-    setProgress(playedSeconds);
-    if (onSaveProgress) {
-      onSaveProgress(playedSeconds);
-    }
-  };
+  const handleProgress = (state: { playedSeconds: number }) => {
+    setProgress(state.playedSeconds)
+    onSaveProgress?.(state.playedSeconds)
+  }
 
-  const handleDuration = (dur) => setDuration(dur);
+  const handleDuration = (dur: number) => setDuration(dur)
 
   const rewind = () => {
     if (playerRef.current) {
-      playerRef.current.seekTo(Math.max(progress - 10, 0));
+      playerRef.current.seekTo(Math.max(progress - 10, 0), "seconds")
     }
-  };
+  }
 
   const forward = () => {
     if (playerRef.current) {
-      playerRef.current.seekTo(Math.min(progress + 10, duration));
+      playerRef.current.seekTo(Math.min(progress + 10, duration), "seconds")
     }
-  };
+  }
 
   const handleNextEpisode = () => {
-    if (nextEpisode) {
-      nextEpisode();
-    }
-  };
+    nextEpisode?.()
+  }
 
-  const handleBrightnessChange = (event) => {
-    setBrightness(event.target.value);
-  };
+  const handleBrightnessChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBrightness(Number(event.target.value))
+  }
 
-  const handleSeek = (e) => {
-    const newTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * duration;
-    playerRef.current.seekTo(newTime);
-    setProgress(newTime);
-  };
+  const handleSeek = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!duration || !playerRef.current) return
+    const newTime = (event.nativeEvent.offsetX / event.currentTarget.offsetWidth) * duration
+    playerRef.current.seekTo(newTime, "seconds")
+    setProgress(newTime)
+  }
 
   useEffect(() => {
-    const timeout = setTimeout(() => setShowControls(false), 3000);
-    return () => clearTimeout(timeout);
-  }, [showControls]);
+    const timeout = setTimeout(() => setShowControls(false), 3000)
+    return () => clearTimeout(timeout)
+  }, [showControls])
 
   return (
     <div
@@ -85,9 +89,8 @@ const VideoPlayerHSLReactPlayer = ({ src, nextEpisode, initialTime = 0, onSavePr
       <div className={`controls ${showControls ? "" : "hidden"}`}>
         {!playing && (
           <button onClick={togglePlay} className="play-center">
-          {playing ? <FaPause /> : <FaPlay />}
-        </button>
-        
+            {playing ? <FaPause /> : <FaPlay />}
+          </button>
         )}
 
         <div className="bottom-controls">
@@ -133,7 +136,7 @@ const VideoPlayerHSLReactPlayer = ({ src, nextEpisode, initialTime = 0, onSavePr
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VideoPlayerHSLReactPlayer;
+export default VideoPlayerHSLReactPlayer
