@@ -53,14 +53,11 @@ const Playground = () => {
 
   return (
       <>
-        <div>
         {videoSrc ? (
             <VideoPlayerHSLReactPlayer src={videoSrc} />
           ) : (
             <p>Carregando vídeo...</p>
             )}
-
-        </div>
         <VideoList cards={cardsData} />
       </>
   );
