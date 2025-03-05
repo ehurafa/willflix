@@ -94,41 +94,45 @@ const VideoPlayerHSLReactPlayer: React.FC<VideoPlayerProps> = ({ src, nextEpisod
         )}
 
         <div className="bottom-controls">
-          <button onClick={rewind} className="control-button">
-            <FaBackward />
-          </button>
+          <div>
+            <button onClick={rewind} className="control-button">
+              <FaBackward />
+            </button>
 
-          <button onClick={togglePlay} className="control-button">
-            {playing ? <FaPause /> : <FaPlay />}
-          </button>
+            <button onClick={togglePlay} className="control-button">
+              {playing ? <FaPause /> : <FaPlay />}
+            </button>
 
-          <button onClick={forward} className="control-button">
-            <FaForward />
-          </button>
+            <button onClick={forward} className="control-button">
+              <FaForward />
+            </button>
 
-          <select className="speed-selector" value={playbackRate} onChange={(e) => setPlaybackRate(Number(e.target.value))}>
-            <option value="0.5">0.5x</option>
-            <option value="1">1x</option>
-            <option value="1.5">1.5x</option>
-            <option value="2">2x</option>
-          </select>
+            <select className="speed-selector" value={playbackRate} onChange={(e) => setPlaybackRate(Number(e.target.value))}>
+              <option value="0.5">0.5x</option>
+              <option value="1">1x</option>
+              <option value="1.5">1.5x</option>
+              <option value="2">2x</option>
+            </select>
 
-          <button onClick={handleNextEpisode} className="control-button">
-            <FaStepForward />
-          </button>
-
-          <div className="brightness-control">
-            <FaSun />
-            <input type="range" min="50" max="150" value={brightness} onChange={handleBrightnessChange} />
+            <button onClick={handleNextEpisode} className="control-button">
+              <FaStepForward />
+            </button>
           </div>
 
-          <span className="time-display">
-            {new Date(progress * 1000).toISOString().substring(14, 19)} / {new Date(duration * 1000).toISOString().substring(14, 19)}
-          </span>
+          <div>
+            <div className="brightness-control">
+              <FaSun />
+              <input type="range" min="50" max="150" value={brightness} onChange={handleBrightnessChange} />
+            </div>
 
-          <button onClick={() => document.documentElement.requestFullscreen()} className="control-button">
-            <FaExpand />
-          </button>
+            <span className="time-display">
+              {new Date(progress * 1000).toISOString().substring(14, 19)} / {new Date(duration * 1000).toISOString().substring(14, 19)}
+            </span>
+
+            <button onClick={() => document.documentElement.requestFullscreen()} className="control-button">
+              <FaExpand />
+            </button>
+          </div>
         </div>
 
         <div className="progress-bar" onClick={handleSeek}>

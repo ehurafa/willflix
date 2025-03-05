@@ -56,6 +56,14 @@
     align-items: center;
     padding: 10px;
     color: white;
+    flex-direction: column;
+    gap: 20px;
+
+    > div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .control-button {
