@@ -73,6 +73,28 @@ const VideoPlayerHSLReactPlayer: React.FC<VideoPlayerProps> = ({ src, nextEpisod
       onMouseMove={() => setShowControls(true)}
       onTouchStart={() => setShowControls(true)}
     >
+      {/* Controles */}
+      <div className={`controls top ${showControls ? "" : "hidden"}`}>
+        {!playing && (
+          <button onClick={togglePlay} className="play-center">
+            {playing ? <FaPause /> : <FaPlay />}
+          </button>
+        )}
+
+        <div className="bottom-controls">
+          <div>
+            <div className="brightness-control bottom">
+              <FaSun />
+              <input type="range" min="50" max="150" value={brightness} onChange={handleBrightnessChange} />
+            </div>
+
+            <span className="time-display">
+              {new Date(progress * 1000).toISOString().substring(14, 19)} / {new Date(duration * 1000).toISOString().substring(14, 19)}
+            </span>
+
+          </div>
+        </div>
+      </div>
       <ReactPlayer
         ref={playerRef}
         url={src}
@@ -86,7 +108,7 @@ const VideoPlayerHSLReactPlayer: React.FC<VideoPlayerProps> = ({ src, nextEpisod
       />
 
       {/* Controles */}
-      <div className={`controls ${showControls ? "" : "hidden"}`}>
+      <div className={`controls bottom ${showControls ? "" : "hidden"}`}>
         {!playing && (
           <button onClick={togglePlay} className="play-center">
             {playing ? <FaPause /> : <FaPlay />}
@@ -117,17 +139,6 @@ const VideoPlayerHSLReactPlayer: React.FC<VideoPlayerProps> = ({ src, nextEpisod
             <button onClick={handleNextEpisode} className="control-button">
               <FaStepForward />
             </button>
-          </div>
-
-          <div>
-            <div className="brightness-control">
-              <FaSun />
-              <input type="range" min="50" max="150" value={brightness} onChange={handleBrightnessChange} />
-            </div>
-
-            <span className="time-display">
-              {new Date(progress * 1000).toISOString().substring(14, 19)} / {new Date(duration * 1000).toISOString().substring(14, 19)}
-            </span>
 
             <button onClick={() => document.documentElement.requestFullscreen()} className="control-button">
               <FaExpand />

@@ -19,6 +19,12 @@
     padding: 10px;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+    z-index: 2;
+
+    &.top {
+      bottom: auto;
+      top: 0;
+    }
 
     &.hidden {
       opacity: 0;
