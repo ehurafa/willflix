@@ -1,14 +1,14 @@
 import React from 'react'
 import './Hero.scss'
 
-import Card from './Card'
+import HeroCard from './HeroCard'
 
 interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
   return (
-    <div className="hero">
-      <Card />
+    <div className="hero-card">
+      <HeroCard />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 @import "../styles/variables";
 @import "../styles/mixins";
 
-.card {
+.hero-card {
   @include border-radius(10px);
   border: 1px solid rgba(141, 139, 139, 0.5);
   width: 100%;

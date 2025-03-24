@@ -1,12 +1,12 @@
 import React from 'react'
-import './Card.scss'
+import './HeroCard.scss'
 
 import { FaPlay, FaPlus  } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-interface CardProps {}
+interface HeroCardProps {}
 
-const Card: React.FC<CardProps> = () => {
+const HeroCard: React.FC<HeroCardProps> = () => {
   return (
     <div className="card">
       <article>
@@ -35,4 +35,4 @@ const Card: React.FC<CardProps> = () => {
   )
 }
 
-export default Card
+export default HeroCard
