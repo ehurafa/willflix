@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import VideoPlayerHSL from '../components/VideoPlayerHSL.tsx'
 import VideoPlayerHSLReactPlayer from '../components/VideoPlayerHSLReactPlayer.tsx'
 import VideoList from '../components/VideoList.tsx'
 import { useParams } from 'react-router-dom'
