@@ -9,7 +9,6 @@ const Header: React.FC = () => {
       <nav>
         <ul>
           <li><Link to="/" className="button pill">Inicio</Link></li>
-          {/* <li><Link to="/videos" className="button pill">Videos</Link></li> */}
         </ul>
         <p>
           Dinheiro acumulado: RS100,00
